@@ -1,0 +1,61 @@
+@import '../Helpers/_helper.scss';
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@mixin menuButton(){
+    @include styleText($fs-2,$fw-semiBold,var(--text-color-light));
+    @include styleBox(none, 100px 100px,var(--bg-color-secondary),none);
+    padding: 10px;
+    cursor: pointer;
+}
+.table{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+    th{
+        border: 1px solid black;
+        padding: 10px 5px;
+    }
+    td{
+        border: 1px solid black;
+        padding: 5px;
+    }
+}
+
+.input-detail {
+    margin-bottom: 15px;
+    width: 90%;
+    border-radius: 5px;
+    .title-container{
+        margin-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        .title-input {
+            @include styleText($fs-2, $fw-semiBold, var(--text-color-primary));
+            margin-bottom: 10px;
+        }
+        .input-error{
+            text-align: right;
+            margin-right: -10%;
+            color: var(--text-danger-1);
+        }
+    }
+    input,
+    select,
+    textarea {
+        min-width:300px;
+        @include styleText($fs-1, $fw-normal, var(--text-color-primary));
+        width: 100%;
+        @include styleBox(none, 5px, var(--bg-color-light), none);
+        padding: 5px 10px;
+        &:focus {
+            outline: none;
+            box-shadow: 0px 0px 24px 5px #CBC9C9;
+        }
+    }
+}

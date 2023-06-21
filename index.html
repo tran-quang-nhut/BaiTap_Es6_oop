@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>title</title>
+  <!-- GOOGLE FONT ROBOTO -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet" />
+  <!-- FONT AWESOME CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/index.min.css">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="#">
+          <p>
+            <span class="name"></span><span class="brand"></span>
+          </p>
+        </a>
+      </div>
+      <div class="title">
+        <p class="title-content">
+          BÀI TẬP QUẢN LÝ HỌC VIỆN NGHIÊN CỨU & GIẢNG DẠY
+        </p>
+      </div>
+    </div>
+  </header>
+  <!-- MENU -->
+  <section class="menu">
+    <div class="container">
+      <div class="menu-item">
+        <div class="search">
+          <form action="" id="search">
+            <input type="text" id="search_input">
+            <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> <span class="text">Tìm kiếm</span></button>
+          </form>
+        </div>
+      </div>
+      <div class="menu-item">
+        <button class="add-people" id="add_button">
+          + <span class="text">Thêm</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- BODY -->
+  <section class="body">
+    <div class="container">
+      <div class="table-container">
+        <table>
+          <thead>
+            <th>ID</th>
+            <th>Họ và tên <i class="fa fa-arrow-down sort" id="sort_1" onclick="sortByName(1)"></i><i class="fa fa-arrow-up sort" onclick="sortByName(2)" id="sort_2"></i></th>
+            <th>Email</th>
+            <th>Loại người dùng
+              <i class="fa fa-filter" id="filter_button">
+                <select name="" id="filter_type">
+                  <option value="All">All</option>
+                  <option value="Student">Student</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Customer">Customer</option>
+                </select>
+              </i>
+              
+            </th>
+            <th>Thông tin</th>
+            <th>Chức năng</th>
+          </thead>
+          <tbody id="table_content">
+            <tr>
+              <td>1</td>
+              <td>Nhựt</td>
+              <td>Nhựt@gmail.com</td>
+              <td>Sinh Viên</td>
+              <td>Điểm trung bình</td>
+              <td><button>delete</button><button style="margin-left: 10px;">Chỉnh sửa</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- Thêm người sử dụng -->
+  <section class="addPanel" style="display: none;">
+    <div class="container">
+      <div class="header">
+        <p>Thêm người dùng</p>
+      </div>
+      <div class="body">
+        <form action="" id="person_form">
+          <div id="basic_infor">
+            <div class="input-detail">
+              <div class="title-container">
+                <p class="title-input">Họ và tên</p>
+              <p class="input-error" id="name_error"></p>
+              </div>
+              <input type="text" id="name">
+            </div>
+            <div class="input-detail">
+              <div class="title-container">
+                <p class="title-input">ID</p>
+                <p class="input-error" id="id_error"></p>
+              </div>
+              <input type="text" id="id" placeholder="">
+            </div>
+            <div class="input-detail">
+              <div class="title-container">
+                <p class="title-input">Email</p>
+                <p class="input-error" id="email_error"></p>
+              </div>
+              <input type="text" id="email">
+            </div>
+            <div class="input-detail">
+              <div class="title-container">
+                <p class="title-input">Địa chỉ</p>
+                <p class="input-error" id="adress_error"></p>
+              </div>
+              <input type="text" id="adress">
+            </div>
+            <div class="input-detail">
+              <div class="title-container">
+                <p class="title-input">Đối tượng</p>
+                <p class="input-error" id="type_error"></p>
+              </div>
+              <select id="type">
+                <option value="">--loại người dùng--</option>
+                <option value="Student">Student</option>
+                <option value="Employee">Employee</option>
+                <option value="Customer">Customer</option>
+              </select>
+            </div>
+          </div>
+          <div id="detail_infor">
+            <div id="Student_infor" class="detail-infor" style="display: none;">
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Toán</p>
+                  <p class="input-error" id="toan_error"></p>
+                </div>
+                <input type="number" id="toan" max="10" min="0" value="0">
+              </div>
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Lý</p>
+                  <p class="input-error" id="ly_error"></p>
+                </div>
+                <input type="number" id="ly" max="10" min="0" value="0">
+              </div>
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Hóa</p>
+                  <p class="input-error" id="hoa_error"></p>
+                </div>
+                <input type="number" id="hoa" max="10" min="0" value="0">
+              </div>
+            </div>
+            <div id="Employee_infor" class="detail-infor" style="display: none;">
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Số ngày làm việc</p>
+                  <p class="input-error" id="dayWork_error"></p>
+                </div>
+                <input type="number" min="0" id="dayWork" value="0">
+              </div>
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Lương theo ngày</p>
+                  <p class="input-error" id="salary_error"></p>
+                </div>
+                <input type="number" id="salary" min="0" value="0">
+              </div>
+            </div>
+            <div id="Customer_infor" class="detail-infor" style="display: none;">
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Tên công ty</p>
+                  <p class="input-error" id="companyName_error"></p>
+                </div>
+                <input type="text" id="companyName">
+              </div>
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Gía trị hóa đơn</p>
+                  <p class="input-error" id="bill_error"></p>
+                </div>
+                <input type="number" id="bill" min="0">
+              </div>
+              <div class="input-detail">
+                <div class="title-container">
+                  <p class="title-input">Đánh giá</p>
+                  <p class="input-error" id="evaluate_error"></p>
+                </div>
+                <textarea row="3" id="evaluate"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="footer">
+        <button id="submit_button">Thêm</button>
+        <button id="edit_button">Sửa</button>
+      </div>
+      <button id="close_panel"></button>
+    </div>
+  </section>
+
+  <!-- Utilities -->
+  <script src="./javascripts/Utilities/checkInput.js" type="module"></script>
+  <script src="./javascripts/Utilities/CookieMethod.js" type="module"></script>
+  <!-- main js -->
+  <script src="./javascripts/main.js" type="module"></script>
+</body>
+
+</html>

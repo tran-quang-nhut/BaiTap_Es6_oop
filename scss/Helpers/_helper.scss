@@ -1,0 +1,79 @@
+/*-----------------------------COLOR-------------------------*/
+$c0-text-primary: #021F48;
+$c0-text-secondary:#1ED90E;
+$c0-text-grey: #CBC9C9;
+$c0-text-light:#fff;
+$c0-text-dark:#0000;
+$c0-text-danger-emphasis:#FF5B4B;
+
+$c0-bg-primary:#5E91F2;
+$c0-bg-secondary:#92B8FF;
+
+
+body{
+    // text color
+    --text-color-primary:#{$c0-text-primary};
+    --text-color-secondary:#{$c0-text-secondary};
+    --text-color-light:#{$c0-text-light};
+    --text-color-dark:#{$c0-text-dark};
+    --text-color-grey:#{$c0-text-grey};
+
+    //background color
+    --bg-color-primary:#{$c0-bg-primary};
+    --bg-color-secondary:#{$c0-bg-secondary};
+    --bg-color-light:#{$c0-text-light};
+    
+
+    //text danger
+    --text-danger-1:#{$c0-text-danger-emphasis};
+}
+
+/*-----------------------------FONT SIZE-------------------------*/
+
+$arrayFontSize:("0":16px,"1":20px,"2":24px,"3":30px,"4":40px,"5":50x,"6":60px);
+@each $key,$value in $arrayFontSize{
+    .fs-#{$key}{
+        font-size: $value;
+    }
+}
+$fs-0:16px; 
+$fs-1:20px;
+$fs-2:24px;
+$fs-3:30px;
+$fs-4:40px;
+$fs-5:50px;
+$fs-6:60px;
+
+/*-----------------------------FONT WEIGHT-------------------------*/
+$arrayWeigh:("extraLight":200,"light":300,"normal":400,"semiBold":500,"bold":600,"bolder":700,"extraBold":800);
+
+@each $key,$value in $arrayWeigh{
+    .fw-#{$key}{
+        font-weight: $value;
+    }
+}
+$fw-extraLight:200;
+$fw-light:300;
+$fw-normal:400;
+$fw-semiBold:500;
+$fw-bold:600;
+$fw-bolder:700;
+$fw-extraBold:900;
+
+
+/*-----------------------------MIXIN-------------------------*/
+//mixin style cho text
+@mixin styleText($fs,$fw,$c){
+    font-size: $fs;
+    font-weight: $fw;
+    color:$c;
+}
+
+//mixin style cho box
+@mixin styleBox($bd,$br,$bg,$bs){
+    border: $bd;
+    border-radius: $br;
+    background: $bg;
+    box-shadow: $bs;
+}
+

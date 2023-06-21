@@ -1,0 +1,312 @@
+@import './Components/components.scss';
+@import './Bases/bases.scss';
+
+body {
+    .header {
+        .container {
+            background-color: var(--bg-color-primary);
+            color: var(--text-color-primary);
+            padding: 30px 70px 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @media only screen and (max-width:768px) {
+                flex-direction: column;
+                align-items: start;
+                padding: 20px 30px 15px;
+            }
+            .logo {
+                a {
+                    text-decoration: none;
+                    text-align: left;
+                    color: var(--text-color-primary);
+                    position: relative;
+
+                    .name {
+                        font-size: $fs-5;
+                        font-weight: $fw-bolder;
+                    }
+
+                    .brand {
+                        position: absolute;
+                        bottom: -15px;
+                        right: 3px;
+                        font-size: $fs-1;
+                    }
+                }
+            }
+
+            .title {
+                .title-content {
+                    font-size: $fs-5;
+                    margin-right: 100px;
+                    text-transform: uppercase;
+                    @media only screen and (max-width:768px) {
+                        margin: 30px auto;
+                        font-size: 45px;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu {
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0;
+            @media only screen and (max-width:768px) {
+                .text{
+                    display: none
+                }
+            }
+            .menu-item {
+                .search {
+                    @include menuButton();
+                    padding-right: 30px;
+                    padding-left: 30px;
+
+                    form {
+                        #search_input {
+                            border-radius: 5px;
+                            padding: 10px;
+                            background-color: var(--bg-color-light);
+                            border: none;
+                            margin-right: 20px;
+                            min-width: 300px;
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+
+                        button {
+                            @include styleText($fs-2, $fw-semiBold, var(--text-color-light));
+                            background-color: transparent;
+                            border: none;
+                            cursor: pointer;
+                            transition: color .5s;
+                            &:hover{
+                                color: var(--text-color-primary);
+                            }
+                        }
+                    }
+                    
+                }
+
+                .add-people {
+                    @include menuButton();
+                    padding-right: 30px;
+                    padding-left: 25px;
+                    transition: color .5s;
+                    &:hover{
+                        color: var(--text-color-primary);
+                        background-color: var(--bg-color-light);
+                        border: 2px solid var(--text-color-primary);
+                    }
+                }
+            }
+        }
+    }
+
+    .body {
+        .container {
+            .table-container {
+                table {
+                    @extend .table;
+
+                    thead {
+                        th {
+                            background-color: var(--bg-color-primary);
+                            color: var(--text-color-light);
+                            i{
+                                margin: 0 5px;
+                                cursor: pointer;
+                                &:hover{
+                                    // color:red;
+                                }
+                            }
+                            #filter_button{
+                                position: relative;
+                            }
+                            #filter_type{
+                                position: absolute;
+                                bottom: -45px;
+                                right: 0;
+                                width: 150px;
+                                padding: 5px;
+                                font-size: $fs-1;
+                                display: none;
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            &:hover {
+                                background-color: var(--bg-color-secondary);
+                            }
+                            .btnDelete{
+                                padding: 5px;
+                                background-color: var(--text-danger-1);
+                                border-radius: 8px;
+                                color: var(--text-color-light);
+                                cursor: pointer;
+                                border: 1px solid grey;
+                                transition: color .5s;
+                                &:hover{
+                                    background-color: var(--bg-color-light);
+                                    color:var((--text-danger-1))
+                                }
+                            }
+                            .btnEdit{
+                                padding: 5px;
+                                background-color: var(--text-color-secondary);
+                                border-radius: 8px;
+                                color: var(--text-color-light);
+                                cursor: pointer;
+                                border: 1px solid grey;
+                                transition: color .5s;
+                                &:hover{
+                                    background-color: var(--bg-color-light);
+                                    color:var(--text-color-secondary)
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .addPanel {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        backdrop-filter: blur(5px);
+        height: 100%;
+
+        .container {
+            position: relative;
+            @include styleBox(none, 10px, var(--bg-color-secondary), none);
+
+            .header {
+                padding: 20px 100px;
+                border-bottom: 1px solid black;
+                text-align: center;
+                @include styleText($fs-3, $fw-semiBold, var(--text-color-light));
+            }
+
+            .body {
+                padding: 20px 50px;
+
+                form {
+                    #basic_infor {
+                        width: 100%;
+                        margin: 0 auto;
+                        display: grid;
+                        grid-template-columns: auto auto;
+                        column-gap: 30px;
+                        @media only screen and (max-width:768px){
+                            grid-template-columns: auto;
+                        }
+                        .input-detail {
+                            @extend .input-detail;
+                        }
+                    }
+
+                    #detail_infor {
+                        #Student_infor {
+                            display: flex;
+                            justify-content: space-around;
+
+                            .input-detail {
+                                @extend .input-detail;
+
+                                .input-error {
+                                    margin-right: 30px !important;
+                                }
+
+                                input {
+                                    width: auto;
+                                    min-width: 80%;
+                                }
+                            }
+
+                        }
+
+                        #Employee_infor {
+                            // display: flex;
+                            justify-content: start;
+                            @media only screen and (max-width:768px){
+                                flex-direction: column;
+                            }
+                            .input-detail {
+                                @extend .input-detail;
+                                .input-error {
+                                    margin-right: 5% !important;
+                                }
+                                input {
+                                    width: auto;
+                                    min-width: 90%;
+                                }
+                            }
+                        }
+
+                        #Customer_infor {
+                            flex-direction: column;
+                            .input-detail {
+                                .input-error {
+                                    margin-right: -15px !important;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .footer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20px 50px;
+                border-top: 1px solid black;
+
+                button {
+                    @include styleText($fs-2, $fw-bold, var(--text-color-light));
+                    @include styleBox(none, 20px, var(--text-color-primary), none);
+                    cursor: pointer;
+                    padding: 10px 20px;
+                    margin-left: 50px;
+                }
+                #edit_button{
+                    display: none;
+                }
+            }
+        }
+
+        #close_panel {
+            position: absolute;
+            background-color: transparent;
+            cursor: pointer;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            background-image: url(../images/close.png);
+            background-size: contain;
+
+            &:hover {
+                background-image: url(../images/close2.png);
+            }
+        }
+    }
+}
